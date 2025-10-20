@@ -1,7 +1,5 @@
 name: Deploy to GitHub Pages
 
-# Trigger redeploy (2025-10-20)
-
 on:
   push:
     branches: [main]

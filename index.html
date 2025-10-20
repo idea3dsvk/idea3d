@@ -344,6 +344,64 @@
                 max-width: 120px;
             }
         }
+
+        /* Materials cards styling and hover effects */
+        #materials .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        #materials .material-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #materials .material-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        #materials .material-card svg {
+            transition: transform 0.25s ease, filter 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        #materials .material-card:hover svg {
+            transform: translateY(-3px) scale(1.06);
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+        }
+
+        /* Accent bar on top for each material */
+        #materials .material-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 6px;
+            width: 100%;
+            background: transparent;
+        }
+
+        /* Colored accents per material */
+        #materials .material-pla::before { background: #667eea; }
+        #materials .material-pla-lum::before { background: #f39c12; }
+        #materials .material-petg::before { background: #2c9abf; }
+        #materials .material-asa::before { background: #ff9800; }
+        #materials .material-tpu::before { background: #27ae60; }
+
+        /* Small colored icon background */
+        #materials .material-card svg {
+            padding: 6px;
+            border-radius: 8px;
+        }
+        #materials .material-pla svg { background: rgba(102,126,234,0.08); }
+        #materials .material-pla-lum svg { background: rgba(243,156,18,0.08); }
+        #materials .material-petg svg { background: rgba(44,154,191,0.08); }
+        #materials .material-asa svg { background: rgba(255,152,0,0.08); }
+        #materials .material-tpu svg { background: rgba(39,174,96,0.08); }
     </style>
     <!-- EmailJS knižnica -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -432,6 +490,119 @@
     </section>
 
     <!-- Portfolio -->
+    
+    <!-- Používané materiály -->
+    <section id="materials">
+        <div class="container">
+            <h2>Používané materiály</h2>
+            <div class="materials-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;">
+                <div class="material-card material-pla" style="background:white;padding:1.5rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+                        <!-- PLA icon: 3D cube -->
+                        <svg role="img" aria-label="Ikona: PLA - 3D kocka" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l7 4v8l-7 4-7-4V6l7-4z" stroke="#667eea" stroke-width="1.2" fill="#f6f7ff"/>
+                            <path d="M12 2v10" stroke="#3498db" stroke-width="1.2"/>
+                        </svg>
+                        <h3 style="margin:0">PLA</h3>
+                    </div>
+                    <p>Jednoduchý na tlač, dobré detaily a nízke zmršťovanie. Vhodné pre vizuálne modely, prototypy a dekorácie.</p>
+                    <ul>
+                        <li>Tlačová teplota: 190–220 °C</li>
+                        <li>Teplota podložky: 20–60 °C (voliteľné)</li>
+                        <li>Rýchlosť: 40–70 mm/s</li>
+                        <li>Výhody: ľahké tlačenie, dobré detaily</li>
+                    </ul>
+                    <button class="btn quote-btn" type="button" data-material="PLA">Cenová ponuka</button>
+                </div>
+
+                <div class="material-card material-pla-lum" style="background:white;padding:1.5rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+                        <!-- PLA Luminous icon: star -->
+                        <svg role="img" aria-label="Ikona: PLA Luminous - hviezda" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l2.9 5.88L21 9.24l-4.5 3.9L17.8 21 12 17.7 6.2 21l1.3-7.86L3 9.24l6.1-1.36L12 2z" fill="#ffd54a" stroke="#f39c12" stroke-width="0.6"/>
+                        </svg>
+                        <h3 style="margin:0">PLA Luminous</h3>
+                    </div>
+                    <p>Svetielkujúci variant PLA — krásny vizuálny efekt po nasvietení. Materiál má podobné vlastnosti ako bežné PLA s mierne odlišným zakončením povrchu.</p>
+                    <ul>
+                        <li>Tlačová teplota: 190–220 °C</li>
+                        <li>Teplota podložky: 20–60 °C</li>
+                        <li>Rýchlosť: 40–60 mm/s</li>
+                        <li>Výhody: estetické, svieti v tme po nabití svetlom</li>
+                    </ul>
+                    <button class="btn quote-btn" type="button" data-material="PLA Luminous">Cenová ponuka</button>
+                </div>
+
+                <div class="material-card material-petg" style="background:white;padding:1.5rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+                        <!-- PETG icon: gear -->
+                        <svg role="img" aria-label="Ikona: PETG - prevodový symbol" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z" fill="#eaf2ff" stroke="#2c3e50" stroke-width="0.8"/>
+                            <path d="M19.4 15a7.9 7.9 0 0 0 .1-1 7.9 7.9 0 0 0-.1-1l2.1-1.6-2-3.5-2.5.8a8 8 0 0 0-1.7-.9L14 2h-4l-.7 3.8c-.6.2-1.1.5-1.7.9L5.1 6.1 3 9.6l2.1 1.6c-.1.6-.1 1.1 0 1.7L3 14.5 5 18l2.5-.8c.5.4 1.1.7 1.7.9L10 22h4l.7-3.8c.6-.2 1.1-.5 1.7-.9L19 18l2.4-3-2-1.9z" fill="#dfefff" stroke="#2c3e50" stroke-width="0.6"/>
+                        </svg>
+                        <h3 style="margin:0">PETG</h3>
+                    </div>
+                    <p>Odolnejší a pružnejší než PLA, s lepšou chemickou odolnosťou a menším rizikom praskania. Skvelé pre funkčné diely a súčiastky.</p>
+                    <ul>
+                        <li>Tlačová teplota: 230–250 °C</li>
+                        <li>Teplota podložky: 60–80 °C</li>
+                        <li>Rýchlosť: 30–60 mm/s</li>
+                        <li>Výhody: pevnosť, mierna pružnosť, odolnosť voči vlhkosti</li>
+                    </ul>
+                    <button class="btn quote-btn" type="button" data-material="PETG">Cenová ponuka</button>
+                </div>
+
+                <div class="material-card material-asa" style="background:white;padding:1.5rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+                        <!-- ASA icon: sun -->
+                        <svg role="img" aria-label="Ikona: ASA - slnko" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="4" fill="#ffcc80" stroke="#f39c12" stroke-width="0.6"/>
+                            <g stroke="#f39c12" stroke-width="0.9">
+                                <path d="M12 1v3" />
+                                <path d="M12 20v3" />
+                                <path d="M4.2 4.2l2.1 2.1" />
+                                <path d="M17.7 17.7l2.1 2.1" />
+                                <path d="M1 12h3" />
+                                <path d="M20 12h3" />
+                                <path d="M4.2 19.8l2.1-2.1" />
+                                <path d="M17.7 6.3l2.1-2.1" />
+                            </g>
+                        </svg>
+                        <h3 style="margin:0">ASA</h3>
+                    </div>
+                    <p>Vysoká odolnosť voči UV a vonkajším podmienkam. Ideálne pre diely určené do exteriéru.</p>
+                    <ul>
+                        <li>Tlačová teplota: 240–260 °C</li>
+                        <li>Teplota podložky: 80–110 °C</li>
+                        <li>Rýchlosť: 30–60 mm/s</li>
+                        <li>Výhody: UV stabilita, robustnosť, teplotná odolnosť</li>
+                    </ul>
+                    <button class="btn quote-btn" type="button" data-material="ASA">Cenová ponuka</button>
+                </div>
+
+                <div class="material-card material-tpu" style="background:white;padding:1.5rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+                        <!-- TPU icon: flexible wave -->
+                        <svg role="img" aria-label="Ikona: TPU - pružná vlna" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 16c4-6 8 0 12 0s8-6 12-0" transform="translate(-2 -6)" stroke="#2ecc71" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 14c3-4 6 0 9 0s6-4 9 0" stroke="#27ae60" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h3 style="margin:0">TPU (Flexi)</h3>
+                    </div>
+                    <p>Elastický a gumovitý materiál pre pružné súčiastky, tesnenia a komponenty vyžadujúce ohyb alebo tlmenie nárazov.</p>
+                    <ul>
+                        <li>Tlačová teplota: 210–240 °C (závisí od tuhosti)</li>
+                        <li>Teplota podložky: 30–60 °C</li>
+                        <li>Rýchlosť: 15–40 mm/s (pomalšie pre lepšiu kvalitu)</li>
+                        <li>Výhody: pružnosť, odolnosť proti nárazom, tesnenie</li>
+                    </ul>
+                    <button class="btn quote-btn" type="button" data-material="TPU (Flexi)">Cenová ponuka</button>
+                </div>
+            </div>
+            <p style="text-align:center;margin-top:1rem;color:#666;">Ak chcete odporúčanie pre konkrétny projekt alebo materiál, napíšte mi v kontakte — pomôžem vybrať optimálne nastavenia a materiál.</p>
+        </div>
+    </section>
+
     <section id="portfolio">
         <div class="container">
             <h2>Portfólio</h2>
@@ -517,6 +688,28 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                }
+            });
+        });
+
+        // Cenová ponuka - predvyplní formulár podľa materiálu
+        document.querySelectorAll('.quote-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const material = this.getAttribute('data-material');
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const messageInput = document.getElementById('message');
+                if (messageInput) {
+                    messageInput.value = `Dobrý deň,\n\nMám záujem o cenovú ponuku na 3D tlač z materiálu: ${material}. Prosím o bližšie informácie a možnosti.\n\nĎakujem.`;
+                }
+                // Skrolovanie na kontakt
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Zameranie na meno
+                if (nameInput) {
+                    nameInput.focus();
                 }
             });
         });
